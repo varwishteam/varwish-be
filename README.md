@@ -9,7 +9,7 @@ To start this app stay at root directory of the app.
 1. clone this repository 
 2. then put in the commands in following order
 ```
-virtualenv env
+python3.7 -m venv env
 source ./env/bin/activate
 pip install -r requirements.txt
 ```
