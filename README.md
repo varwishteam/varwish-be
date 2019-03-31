@@ -12,6 +12,7 @@ To start this app stay at root directory of the app.
 cd varwish
 virtualenv env
 source ./env/bin/activate
+cd ..
 pip install -r requirements.txt
 ```
 
