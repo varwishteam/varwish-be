@@ -9,10 +9,8 @@ To start this app stay at root directory of the app.
 1. clone this repository 
 2. then put in the commands in following order
 ```
-cd varwish
 virtualenv env
 source ./env/bin/activate
-cd ..
 pip install -r requirements.txt
 ```
 
