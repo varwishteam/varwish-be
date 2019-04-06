@@ -37,8 +37,18 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'rest_framework'
+	'django.contrib.sites',
+	'allauth',
+	'allauth.account',
+	'allauth.socialaccount',
+	'rest_auth',
+	'rest_auth.registration',
+	'rest_framework',
+	'rest_framework.authtoken',
+	'users',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
@@ -52,21 +62,19 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'varwish.urls'
 
-TEMPLATES = [
-	{
-		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [],
-		'APP_DIRS': True,
-		'OPTIONS': {
-			'context_processors': [
-				'django.template.context_processors.debug',
-				'django.template.context_processors.request',
-				'django.contrib.auth.context_processors.auth',
-				'django.contrib.messages.context_processors.messages',
-			],
-		},
+TEMPLATES = [{
+	'BACKEND': 'django.template.backends.django.DjangoTemplates',
+	'DIRS': [],
+	'APP_DIRS': True,
+	'OPTIONS': {
+		'context_processors': [
+			'django.template.context_processors.debug',
+			'django.template.context_processors.request',
+			'django.contrib.auth.context_processors.auth',
+			'django.contrib.messages.context_processors.messages',
+		],
 	},
-]
+}, ]
 
 WSGI_APPLICATION = 'varwish.wsgi.application'
 
@@ -76,8 +84,11 @@ WSGI_APPLICATION = 'varwish.wsgi.application'
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'djongo',
+		'NAME': 'backend-db',
+		'HOST': 'mongodb+srv://superuser:<superuser123>@backend-db-cqtpv.gcp.mongodb.net/test?retryWrites=true',
+		'USER': 'superuser',
+		'PASSWORD': 'superuser123',
 	}
 }
 
@@ -119,3 +130,7 @@ REST_FRAMEWORK = {
 		'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 	]
 }
+
+# Authentication settings
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True

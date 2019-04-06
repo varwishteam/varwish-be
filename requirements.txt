@@ -1,5 +1,5 @@
-Django==2.1.7
+Django==2.2
 django-filter==2.1.0
-djangorestframework==3.9.1
+djangorestframework==3.9.2
 pep8==1.7.1
 pytz==2018.9
