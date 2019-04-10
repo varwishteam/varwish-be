@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'aan+y3cmb_pyk_38x)ukkwe8yi^5^&dqw1$!dvic5u7n8%sou)'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -49,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
@@ -78,7 +77,6 @@ TEMPLATES = [{
 
 WSGI_APPLICATION = 'varwish.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -92,7 +90,6 @@ DATABASES = {
 	}
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -102,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
 	{'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
 	{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -117,7 +113,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -131,6 +126,13 @@ REST_FRAMEWORK = {
 	]
 }
 
+AUTHENTICATION_BACKENDS = (
+	"django.contrib.auth.backends.ModelBackend",
+	"allauth.account.auth_backends.AuthenticationBackend",
+)
+
 # Authentication settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.forms.CustomSignupForm'
