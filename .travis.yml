@@ -10,3 +10,10 @@ deploy:
   keep_history: true
   on:
     branch: master
+
+notifications:
+  email: false
+
+script:
+  -python ./varwish/manage.py test
+  -python ./varwish/manage.py check --deploy
