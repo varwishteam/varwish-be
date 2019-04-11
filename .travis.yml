@@ -15,4 +15,4 @@ notifications:
   email: false
 
 script:
-  -python3.7 ./varwish/manage.py test
+  -python ./varwish/manage.py test
