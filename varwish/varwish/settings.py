@@ -45,11 +45,12 @@ INSTALLED_APPS = [
 	'rest_auth.registration',
 	'rest_framework',
 	'rest_framework.authtoken',
-	'users',
+	# 'users',
+	'reset_migrations',
 ]
 
 SITE_ID = 1
-AUTH_USER_MODEL = 'users.CustomUser'
+# AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
