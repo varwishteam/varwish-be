@@ -143,5 +143,5 @@ AUTHENTICATION_BACKENDS = (
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.forms.CustomSignupForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.varwish.forms.CustomSignupForm'
 django_heroku.settings(locals())
