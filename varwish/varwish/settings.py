@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 	'rest_framework.authtoken',
 	# 'users',
 	'reset_migrations',
+	'whitenoise.runserver_nostatic',
+	'django.contrib.staticfiles',
 ]
 
 SITE_ID = 1
