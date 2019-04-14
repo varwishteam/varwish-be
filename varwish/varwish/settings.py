@@ -65,7 +65,7 @@ MIDDLEWARE = [
 	'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'varwish.urls'
+ROOT_URLCONF = 'varwish.varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
