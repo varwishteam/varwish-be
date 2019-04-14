@@ -1,2 +1,2 @@
 release: python varwish/manage.py migrate
-web: gunicorn varwish.wsgi --log-file -
+web: gunicorn varwish.varwish.wsgi --log-file -
