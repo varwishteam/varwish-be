@@ -47,9 +47,6 @@ INSTALLED_APPS = [
 	'rest_framework.authtoken',
 	# 'users',
 	'reset_migrations',
-	'django.middleware.security.SecurityMiddleware',
-	'whitenoise.middleware.WhiteNoiseMiddleware',
-	'whitenoise.runserver_nostatic',
 ]
 
 SITE_ID = 1
