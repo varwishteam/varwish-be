@@ -1,1 +1,1 @@
-web: gunicorn varwish.wsgi
+web: gunicorn varwish.wsgi:application
