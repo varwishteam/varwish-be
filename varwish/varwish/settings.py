@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 	# 'users',
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
-	'django.contrib.staticfiles',
 ]
 
 SITE_ID = 1
