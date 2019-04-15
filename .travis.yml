@@ -15,4 +15,7 @@ notifications:
   email: false
 
 script:
-  -python ./varwish/manage.py test
+  - python ./varwish/manage.py makemigrations
+  - python ./varwish/manage.py migrate
+  - python ./varwish/manage.py test 
+  - python ./varwish/manage.py check --deploy 
