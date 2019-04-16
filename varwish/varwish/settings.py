@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
+	'api',
 ]
 
 SITE_ID = 1
@@ -67,7 +68,7 @@ MIDDLEWARE = [
 	'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'varwish.varwish.urls'
+ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -92,9 +93,9 @@ DATABASES = {
 	'default': {
 		'ENGINE': 'djongo',
 		'NAME': 'backend-db',
-		'HOST': 'mongodb+srv://superuser:<superuser123>@backend-db-cqtpv.gcp.mongodb.net/test?retryWrites=true',
-		'USER': 'superuser',
-		'PASSWORD': 'superuser123',
+		'HOST': 'mongodb://<admin>:<admin123>@ds125302.mlab.com:25302/heroku_360bpp98',
+		'USER': 'admin',
+		'PASSWORD': 'admin123',
 	}
 }
 
@@ -145,7 +146,7 @@ AUTHENTICATION_BACKENDS = (
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.varwish.forms.CustomSignupForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.forms.CustomSignupForm'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
