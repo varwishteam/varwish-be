@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 	# 'users',
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
+	'corsheaders',
 ]
 
 SITE_ID = 1
@@ -63,6 +64,7 @@ MIDDLEWARE = [
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'django.middleware.security.SecurityMiddleware',
 	'whitenoise.middleware.WhiteNoiseMiddleware',
+	'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'varwish.varwish.urls'
@@ -144,4 +146,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.varwish.forms.CustomSignupForm'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 django_heroku.settings(locals())
