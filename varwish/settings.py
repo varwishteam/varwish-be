@@ -69,7 +69,7 @@ MIDDLEWARE = [
 ]
 
 # ROOT_URLCONF = 'varwish.varwish.urls'
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
