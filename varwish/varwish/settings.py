@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
-# 	'api',
+	'api',
 ]
 
 SITE_ID = 1
@@ -68,7 +68,8 @@ MIDDLEWARE = [
 	'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'varwish.varwish.urls'
+# ROOT_URLCONF = 'varwish.varwish.urls'
+ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -146,9 +147,10 @@ AUTHENTICATION_BACKENDS = (
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'varwish.varwish.forms.CustomSignupForm'
-
 CORS_ORIGIN_ALLOW_ALL = True
 
+REST_AUTH_REGISTER_SERIALIZERS = {
+	'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+}
 
 django_heroku.settings(locals())

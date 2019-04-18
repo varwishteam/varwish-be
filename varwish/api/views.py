@@ -1,6 +1,7 @@
-# Create your views here.
-from django import views
+from rest_auth.registration.views import RegisterView
+
+from .serializers import CustomRegisterSerializer
 
 
-class MyView(views.View):
-	something = "yes"
+class CustomRegisterView(RegisterView):
+	serializer_class = CustomRegisterSerializer
