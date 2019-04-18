@@ -150,7 +150,7 @@ ACCOUNT_EMAIL_REQUIRED = False
 CORS_ORIGIN_ALLOW_ALL = True
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-	'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+	'REGISTER_SERIALIZER': 'varwish.api.serializers.CustomRegisterSerializer',
 }
 
 django_heroku.settings(locals())
