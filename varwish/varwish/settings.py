@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
-	'api'
+	'varwish.api'
 ]
 
 SITE_ID = 1
