@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_auth.views import LoginView
 
-from api.views import CustomRegisterView
+from varwish.api.views import CustomRegisterView
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
