@@ -68,8 +68,8 @@ MIDDLEWARE = [
 	'corsheaders.middleware.CorsMiddleware',
 ]
 
-# ROOT_URLCONF = 'varwish.varwish.urls'
-ROOT_URLCONF = 'varwish.urls'
+ROOT_URLCONF = 'varwish.varwish.urls'
+# ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
