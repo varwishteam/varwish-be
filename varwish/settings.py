@@ -36,7 +36,7 @@ INSTALLED_APPS = [
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
 	'django.contrib.messages',
-	'django.contrib.staticfiles',
+	# 'django.contrib.staticfiles',
 	'django.contrib.sites',
 	'allauth',
 	'allauth.account',
@@ -69,7 +69,7 @@ MIDDLEWARE = [
 ]
 
 # ROOT_URLCONF = 'varwish.varwish.urls'
-ROOT_URLCONF = 'varwish.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -127,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'varwish/staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
