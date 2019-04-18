@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
-	'api',
+	'api'
 ]
 
 SITE_ID = 1
@@ -127,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'varwish/staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'varwish/../staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
