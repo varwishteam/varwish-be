@@ -11,6 +11,6 @@ urlpatterns = [
 	path('rest-auth/registration/', include('rest_auth.registration.urls')),
 	path('accounts/', include('allauth.urls')),
 	path('login/', LoginView.as_view(), name='login'),
-	path('register/', CustomRegisterView.as_view(), name='registration'),
+	path('sign-up/', CustomRegisterView.as_view(), name='registration'),
 	path('wishlists/', include('wishlists.urls')),
 ]
