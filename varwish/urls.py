@@ -10,7 +10,7 @@ urlpatterns = [
 	path('rest-auth/', include('rest_auth.urls')),
 	path('rest-auth/registration/', include('rest_auth.registration.urls')),
 	path('accounts/', include('allauth.urls')),
-
 	path('login/', LoginView.as_view(), name='login'),
 	path('register/', CustomRegisterView.as_view(), name='registration'),
+	path('wishlists/', include('wishlists.urls')),
 ]

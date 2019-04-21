@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 	'rest_framework',
 	'rest_framework.authtoken',
 	# 'users',
+	'wishlists',
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
@@ -73,7 +74,9 @@ ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
 	'BACKEND': 'django.template.backends.django.DjangoTemplates',
-	'DIRS': [],
+	'DIRS': [
+		os.path.join(BASE_DIR, 'templates'),
+	],
 	'APP_DIRS': True,
 	'OPTIONS': {
 		'context_processors': [
