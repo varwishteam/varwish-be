@@ -25,3 +25,6 @@ class Wishlist(models.Model):
         choices=WISHLIST_STATUS,
         default=EMPTY
     )
+
+    def __str__(self):
+        return self.name

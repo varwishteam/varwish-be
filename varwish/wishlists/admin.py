@@ -1,5 +1,5 @@
 from django.contrib import admin
-from varwish.models import Wishlist
+from wishlists.models import Wishlist
 
 
 # Register your models here.
