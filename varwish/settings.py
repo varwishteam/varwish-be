@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 	'rest_auth.registration',
 	'rest_framework',
 	'rest_framework.authtoken',
-	# 'users',
+	'users',
 	'wishlists',
 	'reset_migrations',
 	'whitenoise.runserver_nostatic',
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-# AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
@@ -69,7 +69,6 @@ MIDDLEWARE = [
 	'corsheaders.middleware.CorsMiddleware',
 ]
 
-# ROOT_URLCONF = 'varwish.varwish.urls'
 ROOT_URLCONF = 'varwish.urls'
 
 TEMPLATES = [{
