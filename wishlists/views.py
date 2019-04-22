@@ -1,16 +1,29 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views import generic
+from django.urls import reverse_lazy
 
-from .forms import WishlistForm
+from .models import Wishlist
 
 
 # Create your views here.
-def wishlists(request):
-    if request.method == 'POST':
-        form = WishlistForm(request.POST)
-        if form.is_valid():
-            new_wishlist = form.save()
-            return HttpResponseRedirect('/wishlists/')
-    else:
-        form = WishlistForm()
-    return render(request, 'wishlist.html', {'form':form})
+class WishlistList(generic.ListView):
+    model = Wishlist
+
+
+class WishlistCreate(CreateView):
+    model = Wishlist
+    fields = ['name', 'description']
+
+
+class WishlistUpdate(UpdateView):
+    model = Wishlist
+    fields = ['name', 'description']
+
+
+class WishlistDelete(DeleteView):
+    model = Wishlist
+    success_url = reverse_lazy('wishlist_list')
+
+
+class WishlistDetail(generic.DetailView):
+        model = Wishlist

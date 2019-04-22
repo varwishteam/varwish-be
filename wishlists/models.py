@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 # Create your models here.
@@ -30,3 +31,6 @@ class Wishlist(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('wishlist_detail', args=[str(self.id)])
