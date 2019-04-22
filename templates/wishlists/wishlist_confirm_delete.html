@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist delete</title>
+</head>
+<body>
+    <p>Are you sure you want to delete the wishlist: {{ wishlist }}?</p>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete.">
+    </form>
+</body>
+</html>
