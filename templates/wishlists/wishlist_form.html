@@ -5,7 +5,7 @@
     <title>Wishlist</title>
 </head>
 <body>
-    <form action="/wishlists/" method="post">
+    <form action="/wishlists/create" method="post">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
