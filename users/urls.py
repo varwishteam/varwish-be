@@ -1,6 +1,7 @@
-from allauth.account.views import LoginView
-from django.urls import path
+from rest_framework.routers import DefaultRouter
+from .views import UsersViewSet
 
-urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
-]
+router = DefaultRouter()
+router.register(r'', UsersViewSet, base_name='users')
+
+urlpatterns = router.urls

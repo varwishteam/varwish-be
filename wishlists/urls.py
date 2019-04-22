@@ -1,6 +1,10 @@
-from django.urls import path
-from wishlists import views
+from rest_framework.routers import DefaultRouter
+from .views import WishlistsViewSet
 
-urlpatterns = [
-    path('', views.wishlists, name='wishlists'),
-]
+router = DefaultRouter()
+router.register(r'', WishlistsViewSet, base_name='wishlists')
+urlpatterns = router.urls
+
+
+
+
