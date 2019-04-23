@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_auth.views import LoginView
+from rest_auth.views import LoginView, LogoutView
 
 from api.views import CustomRegisterView
 
@@ -12,6 +12,7 @@ urlpatterns = [
 	path('accounts/', include('allauth.urls')),
 
 	path('login/', LoginView.as_view(), name='login'),
+	path('logout/', LogoutView.as_view(), name='logout'),
 	path('sign-up/', CustomRegisterView.as_view(), name='signup'),
 	path('wishlists/', include('wishlists.urls')),
 	path('users/', include('users.urls')),

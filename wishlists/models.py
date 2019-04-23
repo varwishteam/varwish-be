@@ -5,9 +5,9 @@ from django.conf import settings
 
 class Wishlist(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-	name = models.CharField(max_length=50)
-	description = models.CharField(max_length=200)
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, related_name='user')
+	name = models.CharField(max_length=50, null=False, blank=False)
+	description = models.CharField(max_length=200, null=True, blank=True)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False, blank=False, related_name='user')
 
 	EMPTY = 'em'
 	OPEN = 'op'
