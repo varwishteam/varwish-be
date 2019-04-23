@@ -28,31 +28,6 @@ class WishlistSerializer(serializers.ModelSerializer):
 		return items
 
 	def create(self, request):
-		"""
-		{
-			"id": "f95ea100-6547-11e9-a923-1681be663d3e",
-			"name": "Postman-wishlist",
-			"description": "lorem ipsum blablablablabla",
-			"status": "op",
-			"user": 4,
-			"items": [
-				{
-					"item_name": "NOTEBOOK",
-					"note": "MUDDD",
-					"link": "https://notebook.com",
-					"amount": 12,
-					"price": 12000
-				},
-				{
-					"item_name": "NOTEBOOK_2",
-					"note": "WHUUUT",
-					"link": "https://idontknow.com",
-					"amount": 12,
-					"price": 120000
-				}
-			]
-		}
-		"""
 		data = request.data
 		wishlist = Wishlist()
 		wishlist.id = request.POST.get('id', None)
@@ -60,10 +35,13 @@ class WishlistSerializer(serializers.ModelSerializer):
 		wishlist.user = user
 		wishlist.name = data['name']
 		wishlist.description = data['description']
-		wishlist.status = data['status']
-		wishlist.save()
 
-		# todo: assign the wishlist to user ( user.wishlists.add(wishlist) )
+		if data['items']:
+			wishlist.status = wishlist.OPEN
+		else:
+			wishlist.status = wishlist.EMPTY
+
+		wishlist.save()
 
 		for item in data['items']:
 			new_item = Item()
@@ -76,4 +54,7 @@ class WishlistSerializer(serializers.ModelSerializer):
 			new_item.save()
 			wishlist.items.add(new_item)
 		wishlist.save()
+
+		user.wishlists.add(wishlist)
+		user.save()
 		return wishlist

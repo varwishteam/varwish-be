@@ -14,6 +14,6 @@ urlpatterns = [
 	path('login/', LoginView.as_view(), name='login'),
 	path('sign-up/', CustomRegisterView.as_view(), name='signup'),
 	path('wishlists/', include('wishlists.urls')),
-	path('wishlists_add/', include('wishlists.urls2')),
 	path('users/', include('users.urls')),
+	path('api/', include('api.urls')),
 ]
