@@ -1,21 +1,13 @@
+from django.core import serializers as to_json
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.status import (
 	HTTP_201_CREATED,
 	HTTP_400_BAD_REQUEST
 )
-import json
-from uuid import UUID
 
 from .serializers import WishlistSerializer, ItemDetailSerializer
 from .models import Wishlist, Item
-
-
-class UUIDEncoder(json.JSONEncoder):
-	def default(self, obj):
-		if isinstance(obj, UUID):
-			return obj.hex
-		return json.JSONEncoder.default(self, obj)
 
 
 class WishlistsViewSet(viewsets.ModelViewSet):
@@ -27,7 +19,9 @@ class WishlistsViewSet(viewsets.ModelViewSet):
 		if serializer.is_valid():
 			wishlist = serializer.create(request)
 			if wishlist:
-				return Response(status=HTTP_201_CREATED)
+				wishlist = Wishlist.objects.filter(id=wishlist.id)
+				wishlist = WishlistSerializer(wishlist.all(), many=True).data
+				return Response(wishlist, status=HTTP_201_CREATED)
 		return Response(status=HTTP_400_BAD_REQUEST)
 
 
