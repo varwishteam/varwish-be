@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import Wishlist, Item
 from users.models import CustomUser
 
@@ -13,6 +12,12 @@ class ItemSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Item
 		fields = ('id', 'item_name', 'wishlist')
+
+
+class ItemDetailSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Item
+		fields = '__all__'
 
 
 class WishlistSerializer(serializers.ModelSerializer):
