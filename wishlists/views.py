@@ -1,5 +1,4 @@
-from rest_framework import viewsets, renderers
-from rest_framework.decorators import action, detail_route
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.status import (
 	HTTP_201_CREATED,
@@ -23,16 +22,6 @@ class WishlistsViewSet(viewsets.ModelViewSet):
 	serializer_class = WishlistSerializer
 	queryset = Wishlist.objects.all()
 
-	@detail_route(methods=['get', 'post', 'delete', 'put'], url_path='items', url_name='items')
-	def items(self, request, pk):
-		# wishlist = self.get_object()
-		print(pk)
-		# print(type(wishlist))
-		queryset = Wishlist.objects.filter(id=pk)
-		serializer = ItemDetailSerializer(queryset[0].items, many=True)
-		# return Response(json.dumps(serializer.data, cls=UUIDEncoder))
-		return Response(serializer.data)
-
 	def create(self, request, *args, **kwargs):
 		serializer = WishlistSerializer(data=request.data)
 		if serializer.is_valid():
@@ -42,9 +31,10 @@ class WishlistsViewSet(viewsets.ModelViewSet):
 		return Response(status=HTTP_400_BAD_REQUEST)
 
 
-class ItemViewSet(viewsets.ModelViewSet):
-	serializer_class = ItemDetailSerializer(Item)
-	# queryset = Item.objects.all()
+class ItemsViewSet(viewsets.ModelViewSet):
+	serializer_class = ItemDetailSerializer
 
-	# def get(self, request, uuid):
-	# 	queryset = Item.objects.filter(id=uuid)
+	def get_queryset(self):
+		for i in self.kwargs:
+			print(i)
+		return Item.objects.filter(wishlist=self.kwargs['_pk'])
