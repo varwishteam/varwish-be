@@ -106,9 +106,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-	{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
-	{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
-	{'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+	# For testing purposes
+	# {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+	# {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+	# {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
 	{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
@@ -136,9 +137,16 @@ REST_FRAMEWORK = {
 	# Use Django's standard `django.contrib.auth` permissions,
 	# or allow read-only access for unauthenticated users.
 	'DEFAULT_PERMISSION_CLASSES': [
-		'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+		# 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+		'rest_framework.permissions.IsAuthenticated',
+	],
+	'DEFAULT_AUTHENTICATION_CLASSES': [
+		'rest_framework.authentication.TokenAuthentication',
+		'rest_framework.authentication.SessionAuthentication',
 	]
 }
+
+CSRF_COOKIE_NAME = 'csrftoken'
 
 AUTHENTICATION_BACKENDS = (
 	"django.contrib.auth.backends.ModelBackend",
@@ -146,14 +154,19 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Authentication settings
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_UNIQUE_EMAIL = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 REST_AUTH_REGISTER_SERIALIZERS = {
 	'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+}
+
+REST_AUTH_SERIALIZERS = {
+	'TOKEN_SERIALIZER': 'api.serializers.TokenSerializer',
 }
 
 django_heroku.settings(locals())
