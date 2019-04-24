@@ -32,4 +32,3 @@ class ItemsViewSet(viewsets.ModelViewSet):
 		for i in self.kwargs:
 			print(i)
 		return Item.objects.filter(wishlist=self.kwargs['_pk'])
->>>>>>> e180f5382824762c408eb53f4c3102c1d4483785

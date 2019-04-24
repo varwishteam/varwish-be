@@ -41,4 +41,3 @@ class Item(models.Model):
 
 	def __str__(self):
 		return self.item_name
->>>>>>> e180f5382824762c408eb53f4c3102c1d4483785
