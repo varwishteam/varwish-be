@@ -1,10 +1,16 @@
-from django.urls import path
-from wishlists import views
+from rest_framework.routers import DefaultRouter
+from rest_framework_nested import routers
+from django.urls import include, re_path
+
+from .views import WishlistsViewSet, ItemsViewSet
+
+router = DefaultRouter()
+router.register(r'', WishlistsViewSet, base_name='wishlists')
+
+wishlists_router = routers.NestedDefaultRouter(router, r'', lookup='')
+wishlists_router.register(r'items', ItemsViewSet, base_name='wishlist-items')
 
 urlpatterns = [
-    path('', views.WishlistList.as_view(), name='wishlist_list'),
-    path('create', views.WishlistCreate.as_view(), name='wishlist_create'),
-    path('update/<uuid:pk>', views.WishlistUpdate.as_view(), name='wishlist_update'),
-    path('delete/<uuid:pk>', views.WishlistDelete.as_view(), name='wishlist_delete'),
-    path('<uuid:pk>', views.WishlistDetail.as_view(), name='wishlist_detail'),
+	re_path(r'^', include(router.urls)),
+	re_path(r'^', include(wishlists_router.urls)),
 ]
