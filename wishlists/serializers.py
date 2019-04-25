@@ -57,6 +57,7 @@ class WishlistSerializer(serializers.ModelSerializer):
 			new_item.link = item['link']
 			new_item.amount = item['amount']
 			new_item.price = item['price']
+			new_item.status = item['status']
 			new_item.wishlist = wishlist
 			new_item.save()
 			wishlist.items.add(new_item)
