@@ -39,5 +39,19 @@ class Item(models.Model):
 	price = models.IntegerField()
 	wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE, related_name='items', blank=False, null=False)
 
+	WANTED = 'want'
+	PURCHASED = 'purc'
+
+	ITEM_STATUS = (
+		(WANTED, 'Wanted'),
+		(PURCHASED, 'Purchased'),
+	)
+
+	status = models.CharField(
+		max_length=4,
+		choices=ITEM_STATUS,
+		default=WANTED
+	)
+
 	def __str__(self):
 		return self.item_name
