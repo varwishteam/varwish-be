@@ -8,12 +8,6 @@ class StringSerializer(serializers.StringRelatedField):
 		return val
 
 
-class ItemSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Item
-		fields = ('id', 'item_name', 'wishlist')
-
-
 class ItemDetailSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Item
@@ -21,15 +15,15 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 
 
 class WishlistSerializer(serializers.ModelSerializer):
-	items = serializers.SerializerMethodField()
-	user = StringSerializer(many=False)
-
 	class Meta:
 		model = Wishlist
 		fields = ('id', 'name', 'description', 'user', 'status', 'items')
 
+	user = StringSerializer(many=False)
+	items = serializers.SerializerMethodField()
+
 	def get_items(self, obj):
-		items = ItemSerializer(obj.items.all(), many=True).data
+		items = ItemDetailSerializer(obj.items.all(), many=True).data
 		return items
 
 	def create(self, request):
@@ -55,7 +49,7 @@ class WishlistSerializer(serializers.ModelSerializer):
 			new_item.link = item['link']
 			new_item.amount = item['amount']
 			new_item.price = item['price']
-			new_item.status = item['status']
+			new_item.status = Item.WANTED
 			new_item.wishlist = wishlist
 			new_item.save()
 			wishlist.items.add(new_item)
