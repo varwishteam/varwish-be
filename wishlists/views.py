@@ -12,7 +12,10 @@ from .models import Wishlist, Item
 
 class WishlistsViewSet(viewsets.ModelViewSet):
 	serializer_class = WishlistSerializer
-	queryset = Wishlist.objects.all()
+
+	def get_queryset(self):
+		user = self.request.user
+		return Wishlist.objects.filter(user=user)
 
 	def create(self, request, *args, **kwargs):
 		serializer = WishlistSerializer(data=request.data)
@@ -29,6 +32,4 @@ class ItemsViewSet(viewsets.ModelViewSet):
 	serializer_class = ItemDetailSerializer
 
 	def get_queryset(self):
-		for i in self.kwargs:
-			print(i)
 		return Item.objects.filter(wishlist=self.kwargs['_pk'])

@@ -32,8 +32,6 @@ class WishlistSerializer(serializers.ModelSerializer):
 		items = ItemSerializer(obj.items.all(), many=True).data
 		return items
 
-	#  todo: PUT, DELETE
-
 	def create(self, request):
 		data = request.data
 		wishlist = Wishlist()
