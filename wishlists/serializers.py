@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import Wishlist, Item
 from users.models import CustomUser
 
@@ -9,12 +10,21 @@ class StringSerializer(serializers.StringRelatedField):
 
 
 class ItemDetailSerializer(serializers.ModelSerializer):
+
 	class Meta:
 		model = Item
 		fields = '__all__'
 
+	category = StringSerializer(many=False)
+
+	# def create(self, request):
+	# 	data = request.data
+	# 	item = Item()
+	# 	item.item_name = data['item_name']
+
 
 class WishlistSerializer(serializers.ModelSerializer):
+
 	class Meta:
 		model = Wishlist
 		fields = ('id', 'name', 'description', 'user', 'status', 'items')

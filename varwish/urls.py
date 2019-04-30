@@ -17,4 +17,5 @@ urlpatterns = [
 	path('wishlists/', include('wishlists.urls')),
 	path('users/', include('users.urls')),
 	path('api/', include('api.urls')),
+	path('categories/', include('categories.urls')),
 ]

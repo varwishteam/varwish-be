@@ -1,4 +1,3 @@
-from django.core import serializers as to_json
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.status import (
@@ -33,3 +32,12 @@ class ItemsViewSet(viewsets.ModelViewSet):
 
 	def get_queryset(self):
 		return Item.objects.filter(wishlist=self.kwargs['_pk'])
+
+	# todo: def create - on Item's creation set status = WANTED
+	# def create(self, request, *args, **kwargs):
+	# 	serializer = ItemDetailSerializer(data=request.data)
+	# 	if serializer.is_valid():
+	# 		item = serializer.create(request)
+	# 		if item:
+	# 			return Response(status=HTTP_201_CREATED)
+	# 	return Response(status=HTTP_400_BAD_REQUEST)

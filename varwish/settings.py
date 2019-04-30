@@ -36,21 +36,25 @@ INSTALLED_APPS = [
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
 	'django.contrib.messages',
-	# 'django.contrib.staticfiles',
 	'django.contrib.sites',
+
 	'allauth',
 	'allauth.account',
 	'allauth.socialaccount',
+
 	'rest_auth',
 	'rest_auth.registration',
 	'rest_framework',
 	'rest_framework.authtoken',
-	'users',
-	'wishlists',
 	'reset_migrations',
+
 	'whitenoise.runserver_nostatic',
 	'corsheaders',
-	'api'
+
+	'api',
+	'users',
+	'wishlists',
+	'categories',
 ]
 
 SITE_ID = 1
