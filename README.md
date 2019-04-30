@@ -29,10 +29,15 @@ source venv/bin/activate
 - [Python 3.7.1](https://www.python.org/downloads/release/python-371/)
 - [PyCharm](https://www.jetbrains.com/pycharm/) (latest version)
 ##### Using VSCode
-- [Pip](https://pip.pypa.io/en/stable/) \
-`curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py` and `python get-pip.py`
-- [virtualenv](https://virtualenv.pypa.io/en/latest/) \
-`pip install virtualenv`
+- [Pip](https://pip.pypa.io/en/stable/)
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+```
+- [virtualenv](https://virtualenv.pypa.io/en/latest/)
+```
+pip install virtualenv
+```
 
 ### Installation
 1. Clone this repository and open up the project in PyCharm \
