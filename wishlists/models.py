@@ -73,7 +73,7 @@ class Item(models.Model):
 		on_delete=models.CASCADE,
 		null=True,
 		blank=True,
-		related_name='category'
+		related_name='category_items'
 	)
 
 	def __str__(self):

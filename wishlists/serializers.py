@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import Wishlist, Item
+from categories.models import Category
 from users.models import CustomUser
 
 
@@ -17,10 +18,15 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 
 	category = StringSerializer(many=False)
 
-	# def create(self, request):
-	# 	data = request.data
-	# 	item = Item()
-	# 	item.item_name = data['item_name']
+	def create(self, request):
+		data = request.data
+		category = data.pop('category')
+		wishlist = data.pop('wishlist')
+		item = Item.objects.create(**data)
+		item.category = Category.objects.filter(id=category).get()
+		item.wishlist = Wishlist.objects.filter(id=wishlist).get()
+		item.save()
+		return item
 
 
 class WishlistSerializer(serializers.ModelSerializer):
@@ -38,33 +44,16 @@ class WishlistSerializer(serializers.ModelSerializer):
 
 	def create(self, request):
 		data = request.data
-		wishlist = Wishlist()
-		wishlist.id = request.POST.get('id', None)
-		user = CustomUser.objects.get(id=data['user'])
-		wishlist.user = user
-		wishlist.name = data['name']
-		wishlist.description = data['description']
+		user = data.pop('user')
+		items = data.pop('items')
+		wishlist = Wishlist.objects.create(**data)
+		wishlist.user = CustomUser.objects.filter(id=user).get()
 
-		if data['items']:
-			wishlist.status = wishlist.OPEN
-		else:
-			wishlist.status = wishlist.EMPTY
+		for item in items:
+			category = item.pop('category')
+			item = wishlist.items.create(**item)
+			item.category = Category.objects.filter(id=category).get()
+			item.save()
 
 		wishlist.save()
-
-		for item in data['items']:
-			new_item = Item()
-			new_item.item_name = item['item_name']
-			new_item.note = item['note']
-			new_item.link = item['link']
-			new_item.amount = item['amount']
-			new_item.price = item['price']
-			new_item.status = Item.WANTED
-			new_item.wishlist = wishlist
-			new_item.save()
-			wishlist.items.add(new_item)
-		wishlist.save()
-
-		user.wishlists.add(wishlist)
-		user.save()
 		return wishlist
