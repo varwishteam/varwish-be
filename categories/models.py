@@ -11,8 +11,8 @@ class Attribute(models.Model):
 	)
 
 	name = models.CharField(max_length=50, null=False, blank=False)
-	type = models.CharField(max_length=50)  # basic setup, will be updated to another field type
-	value = models.CharField(max_length=50)  # field type based on Attribute.type
+	type = models.CharField(max_length=50, null=True, blank=True)  # basic setup, will be updated to another field type
+	value = models.CharField(max_length=50, blank=True)  # field type based on Attribute.type
 
 
 class Category(models.Model):
