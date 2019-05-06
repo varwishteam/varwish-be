@@ -23,7 +23,11 @@ class AttributeViewSet(viewsets.ModelViewSet):
 	def create(self, request, *args, **kwargs):
 		serializer = AttributeSerializer(data=request.data)
 		if serializer.is_valid():
-			attribute = serializer.create(request)
+			try:
+				attribute = serializer.create(request)
+			except TypeError as te:
+				return Response(te.args, status=HTTP_400_BAD_REQUEST)
+
 			if attribute:
 				attribute = Attribute.objects.filter(id=attribute.id)
 				attribute = AttributeSerializer(attribute.all(), many=True).data
