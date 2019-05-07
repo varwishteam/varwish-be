@@ -16,8 +16,6 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 		model = Item
 		fields = '__all__'
 
-	category = StringSerializer(many=False)
-
 	def create(self, request):
 		data = request.data
 		category = data.pop('category')
