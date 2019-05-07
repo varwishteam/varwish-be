@@ -4,6 +4,7 @@ from django.urls import include, re_path
 
 from .views import WishlistsViewSet, ItemsViewSet
 
+
 router = DefaultRouter()
 router.register(r'', WishlistsViewSet, base_name='wishlists')
 

@@ -19,7 +19,11 @@ class WishlistsViewSet(viewsets.ModelViewSet):
 	def create(self, request, *args, **kwargs):
 		serializer = WishlistSerializer(data=request.data)
 		if serializer.is_valid():
-			wishlist = serializer.create(request)
+			try:
+				wishlist = serializer.create(request)
+			except TypeError as te:
+				return Response(te.args, status=HTTP_400_BAD_REQUEST)
+
 			if wishlist:
 				wishlist = Wishlist.objects.filter(id=wishlist.id)
 				wishlist = WishlistSerializer(wishlist.all(), many=True).data
@@ -36,7 +40,11 @@ class ItemsViewSet(viewsets.ModelViewSet):
 	def create(self, request, *args, **kwargs):
 		serializer = ItemDetailSerializer(data=request.data)
 		if serializer.is_valid():
-			item = serializer.create(request)
+			try:
+				item = serializer.create(request)
+			except TypeError as te:
+				return Response(te.args, status=HTTP_400_BAD_REQUEST)
+
 			if item:
 				item = Item.objects.filter(id=item.id)
 				item = ItemDetailSerializer(item.all(), many=True).data

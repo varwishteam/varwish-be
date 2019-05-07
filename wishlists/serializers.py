@@ -14,9 +14,7 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Item
-		fields = '__all__'
-
-	category = StringSerializer(many=False)
+		fields = ('id', 'item_name', 'category', 'wishlist', 'note', 'amount', 'price', 'link', 'status')
 
 	def create(self, request):
 		data = request.data
