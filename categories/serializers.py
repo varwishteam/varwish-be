@@ -4,11 +4,6 @@ from .models import Category, Attribute
 from wishlists.serializers import ItemDetailSerializer
 
 
-class StringSerializer(serializers.StringRelatedField):
-	def to_internal_value(self, val):
-		return val
-
-
 class CategorySerializer(serializers.ModelSerializer):
 
 	class Meta:
@@ -31,9 +26,7 @@ class AttributeSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Attribute
-		fields = '__all__'
-
-	category = StringSerializer(many=False)
+		fields = ('id', 'name', 'type', 'value', 'category')
 
 	def create(self, request):
 		data = request.data
