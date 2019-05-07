@@ -70,9 +70,10 @@ class Item(models.Model):
 
 	category = models.ForeignKey(
 		Category,
-		on_delete=models.CASCADE,
+		on_delete=models.SET_NULL,
 		null=True,
 		blank=True,
+		default=None,
 		related_name='category_items'
 	)
 
