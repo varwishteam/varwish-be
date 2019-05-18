@@ -24,6 +24,11 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 		item.category = Category.objects.filter(id=category).get()
 		item.wishlist = Wishlist.objects.filter(id=wishlist).get()
 		item.save()
+
+		wishlist = Wishlist.objects.filter(id=wishlist).get()
+		wishlist.status = 'op'
+		wishlist.save()
+
 		return item
 
 
